@@ -15,6 +15,7 @@ title.className = 'title';
 title.textContent = 'Мой ToDo-лист';
 header.appendChild(title);
 
+// форма
 const form = document.createElement('form');
 form.className = 'form-row';
 card.appendChild(form);
@@ -36,6 +37,7 @@ btnAdd.type = 'submit';
 btnAdd.textContent = 'Добавить';
 form.appendChild(btnAdd);
 
+// список задач
 const list = document.createElement('ul');
 list.className = 'list';
 card.appendChild(list);
