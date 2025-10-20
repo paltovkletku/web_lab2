@@ -1,3 +1,36 @@
+const STORAGE_KEY = 'todo_tasks';
+
+let tasks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+function saveTasks() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+}
+
+function render() {
+  list.innerHTML = '';
+  
+  if (tasks.length === 0) {
+    const empty = document.createElement('div');
+    empty.textContent = 'Задач пока нет';
+    list.appendChild(empty);
+    return;
+  }
+
+  tasks.forEach(task => {
+    const li = document.createElement('li');
+    li.className = 'task-item';
+    li.textContent = `${task.title} — ${task.date || 'Не указана'}`;
+    list.appendChild(li);
+  });
+}
+
+function addTask(title, date) {
+  const newTask = { id: Date.now(), title, date, done: false };
+  tasks.push(newTask);
+  saveTasks();
+  render();
+}
+
 const container = document.createElement('div');
 container.className = 'container';
 document.body.appendChild(container);
@@ -41,3 +74,15 @@ form.appendChild(btnAdd);
 const list = document.createElement('ul');
 list.className = 'list';
 card.appendChild(list);
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const title = inputTitle.value.trim();
+  const date = inputDate.value;
+  if (!title) return alert('Нужно ввести задачу!');
+  addTask(title, date);
+  inputTitle.value = '';
+  inputDate.value = '';
+});
+
+render();
