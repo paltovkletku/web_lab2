@@ -170,12 +170,14 @@ button.small {
 }
 
 .modal-window {
+  box-sizing: border-box;
   padding: 18px;
   width: 90%;
   max-width: 350px;
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 8px 22px rgba(20, 40, 20, 0.25);
+  overflow: hidden;
 }
 
 .modal-window h3 {
@@ -227,13 +229,3 @@ button.small {
   font-size: 15px;
 }
 
-.modal-window {
-  box-sizing: border-box;
-  padding: 18px;
-  width: 90%;
-  max-width: 350px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 22px rgba(20, 40, 20, 0.25);
-  overflow: hidden;
-}
